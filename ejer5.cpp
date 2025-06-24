@@ -57,6 +57,18 @@ void ordenar_seleccion(pnodo &lista) {
 		}
 	}
 }
+void combinar_listas(pnodo &lista1, pnodo lista2) {
+	if (lista1 == NULL) {
+		lista1 = lista2;
+	} else {
+		pnodo i = lista1;
+		while (i->siguiente != NULL) {
+			i = i->siguiente;
+		}
+		i->siguiente = lista2;
+	}
+}
+
 
 int main() {
 	pnodo lista;
@@ -76,6 +88,25 @@ int main() {
 	
 	cout << "Lista luego de ordenar: " << endl;
 	mostrar_lista(lista);
+	
+	pnodo lista2;
+	iniciar_lista(lista2);
+	
+	int otros_valores[] = {8, 2, 6};
+	for (int i = 0; i < 3; i++) {
+		pnodo nuevo;
+		crear_nodo(nuevo, otros_valores[i]);
+		agregar_final(lista2, nuevo);
+	}
+	
+	cout << "Segunda lista: " << endl;
+	mostrar_lista(lista2);
+	
+	combinar_listas(lista, lista2);
+	
+	cout << "Lista combinada (sin importar orden): " << endl;
+	mostrar_lista(lista);
+	
 	
 	return 0;
 }
