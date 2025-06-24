@@ -39,6 +39,25 @@ void mostrar_lista(pnodo lista) {
 	cout << "NULL" << endl;
 }
 
+void ordenar_seleccion(pnodo &lista) {
+	pnodo i, j, min;
+	int aux;
+	
+	for (i = lista; i != NULL && i->siguiente != NULL; i = i->siguiente) {
+		min = i;
+		for (j = i->siguiente; j != NULL; j = j->siguiente) {
+			if (j->dato < min->dato) {
+				min = j;
+			}
+		}
+		if (min != i) {
+			aux = i->dato;
+			i->dato = min->dato;
+			min->dato = aux;
+		}
+	}
+}
+
 int main() {
 	pnodo lista;
 	iniciar_lista(lista);
@@ -50,7 +69,12 @@ int main() {
 		agregar_final(lista, nuevo);
 	}
 	
-	cout << "Lista original:" << endl;
+	cout << "Lista antes de ordenar: " << endl;
+	mostrar_lista(lista);
+	
+	ordenar_seleccion(lista);
+	
+	cout << "Lista luego de ordenar: " << endl;
 	mostrar_lista(lista);
 	
 	return 0;
