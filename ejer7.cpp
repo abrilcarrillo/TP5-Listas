@@ -38,6 +38,14 @@ void enigma(Nodo* nodo) {
 }
 
 // funcion para lista
+int misterio(Nodo* nodo) {
+	if (nodo == nullptr)
+		return 0;
+	else
+		return misterio(nodo->getSiguiente()) + 1;
+}
+
+// funcion para lista 
 Nodo* crear_lista_prueba() {
 	
 	Nodo* n1 = new Nodo(6);
@@ -59,6 +67,9 @@ int main() {
 	
 	cout << "Impresion de lista en orden inverso (enigma): " << endl;
 	enigma(lista);
+	
+	cout << "Cantidad de nodos (misterio): ";
+	cout << misterio(lista) << endl;
 	
 	return 0;
 }
