@@ -9,23 +9,23 @@ struct Nodo {
 
 template <typename T>
 void iniciar_lista(Nodo<T>*& lista) {
-	lista = NULL;
+	lista = nullptr;
 }
 
 template <typename T>
 	void crear_nodo(Nodo<T>*& nuevo, T valor) {
 	nuevo = new Nodo<T>;
 	nuevo->dato = valor;
-	nuevo->siguiente = NULL;
+	nuevo->siguiente = nullptr;
 }
 	
 	template <typename T>
 		void agregar_final(Nodo<T>*& lista, Nodo<T>* nuevo) {
-		if (lista == NULL) {
+		if (lista == nullptr) {
 			lista = nuevo;
 		} else {
 			Nodo<T>* i = lista;
-			while (i->siguiente != NULL) {
+			while (i->siguiente != nullptr) {
 				i = i->siguiente;
 			}
 			i->siguiente = nuevo;
@@ -35,7 +35,7 @@ template <typename T>
 		template <typename T>
 			void mostrar_lista(Nodo<T>* lista) {
 			Nodo<T>* i = lista;
-			while (i != NULL) {
+			while (i != nullptr) {
 				cout << i->dato << " -> ";
 				i = i->siguiente;
 			}
@@ -51,33 +51,67 @@ template <typename T>
 			}
 			
 			int contar_primos(Nodo<int>* lista) {
-				int contador = 0;
+				int cuenta = 0;
 				Nodo<int>* i = lista;
-				while (i != NULL) {
+				while (i != nullptr) {
 					if (es_primo(i->dato)) {
-						contador++;
+						cuenta++;
 					}
 					i = i->siguiente;
 				}
-				return contador;
+				return cuenta;
+			}
+			
+			void contar_mayusculas_minusculas(Nodo<char>* lista, int& mayus, int& minus) {
+				mayus = 0;
+				minus = 0;
+				Nodo<char>* i = lista;
+				while (i != nullptr) {
+					if (i->dato >= 'A' && i->dato <= 'Z') {
+						mayus++;
+					} else if (i->dato >= 'a' && i->dato <= 'z') {
+						minus++;
+					}
+					i = i->siguiente;
+				}
 			}
 			
 			int main() {
-				Nodo<int>* lista;
-				iniciar_lista(lista);
+				// enteros y primos
+				Nodo<int>* lista_enteros;
+				iniciar_lista(lista_enteros);
 				
-				int valores[] = {2, 7, 8, 9, 11, 13, 16, 18};
-				for (int i = 0; i < 8; i++) {
+				int valores[] = {3, 8, 7, 4, 2, 9};
+				for (int i = 0; i < 6; i++) {
 					Nodo<int>* nuevo;
 					crear_nodo(nuevo, valores[i]);
-					agregar_final(lista, nuevo);
+					agregar_final(lista_enteros, nuevo);
 				}
 				
-				cout << "Lista de enteros: " << endl;
-				mostrar_lista(lista);
+				cout << "Lista de enteros: ";
+				mostrar_lista(lista_enteros);
+				int total_primos = contar_primos(lista_enteros);
+				cout << "Cantidad de primos en la lista: " << total_primos << endl;
 				
-				int cantidad_primos = contar_primos(lista);
-				cout << "Cantidad de numeros primos: " << cantidad_primos << endl;
+				// caracteres, mayusculas y minusculas
+				Nodo<char>* lista_caracteres;
+				iniciar_lista(lista_caracteres);
+				
+				char letras[] = {'A', 'b', 'C', 'd', 'E', 'f'};
+				for (int i = 0; i < 6; i++) {
+					Nodo<char>* nuevo;
+					crear_nodo(nuevo, letras[i]);
+					agregar_final(lista_caracteres, nuevo);
+				}
+				
+				cout << "\nLista de caracteres: ";
+				mostrar_lista(lista_caracteres);
+				
+				int mayusculas, minusculas;
+				contar_mayusculas_minusculas(lista_caracteres, mayusculas, minusculas);
+				
+				cout << "Cantidad de mayusculas: " << mayusculas << endl;
+				cout << "Cantidad de minusculas: " << minusculas << endl;
 				
 				return 0;
 			}
