@@ -37,12 +37,20 @@ void enigma(Nodo* nodo) {
 	}
 }
 
-// funcion para lista
+// funcion misterio
 int misterio(Nodo* nodo) {
 	if (nodo == nullptr)
 		return 0;
 	else
 		return misterio(nodo->getSiguiente()) + 1;
+}
+
+// función desconocido 
+Nodo* desconocido(Nodo* nodo) {
+	if (nodo == nullptr || nodo->getSiguiente() == nullptr)
+		return nodo;
+	else
+		return desconocido(nodo->getSiguiente());
 }
 
 // funcion para lista 
@@ -59,7 +67,7 @@ Nodo* crear_lista_prueba() {
 	n3->setSiguiente(n4);
 	n4->setSiguiente(n5);
 	
-	return n1; // retorna el inicio
+	return n1;
 }
 
 int main() {
@@ -70,6 +78,11 @@ int main() {
 	
 	cout << "Cantidad de nodos (misterio): ";
 	cout << misterio(lista) << endl;
+	
+	Nodo* ultimo = desconocido(lista);
+	if (ultimo != nullptr) {
+		cout << "Ultimo nodo (desconocido): " << ultimo->getDato() << endl;
+	}
 	
 	return 0;
 }
