@@ -57,6 +57,7 @@ void ordenar_seleccion(pnodo &lista) {
 		}
 	}
 }
+
 void combinar_listas(pnodo &lista1, pnodo lista2) {
 	if (lista1 == NULL) {
 		lista1 = lista2;
@@ -69,6 +70,36 @@ void combinar_listas(pnodo &lista1, pnodo lista2) {
 	}
 }
 
+pnodo combinar_listas_ordenadas(pnodo l1, pnodo l2) {
+	pnodo resultado = NULL;
+	pnodo nuevo;
+	
+	while (l1 != NULL && l2 != NULL) {
+		if (l1->dato < l2->dato) {
+			crear_nodo(nuevo, l1->dato);
+			agregar_final(resultado, nuevo);
+			l1 = l1->siguiente;
+		} else {
+			crear_nodo(nuevo, l2->dato);
+			agregar_final(resultado, nuevo);
+			l2 = l2->siguiente;
+		}
+	}
+	
+	while (l1 != NULL) {
+		crear_nodo(nuevo, l1->dato);
+		agregar_final(resultado, nuevo);
+		l1 = l1->siguiente;
+	}
+	
+	while (l2 != NULL) {
+		crear_nodo(nuevo, l2->dato);
+		agregar_final(resultado, nuevo);
+		l2 = l2->siguiente;
+	}
+	
+	return resultado;
+}
 
 int main() {
 	pnodo lista;
@@ -107,6 +138,35 @@ int main() {
 	cout << "Lista combinada (sin importar orden): " << endl;
 	mostrar_lista(lista);
 	
+	// respeta orden
+	pnodo lista_ordenada1, lista_ordenada2;
+	iniciar_lista(lista_ordenada1);
+	iniciar_lista(lista_ordenada2);
+	
+	int l1[] = {1, 4, 6};
+	int l2[] = {2, 3, 5};
+	
+	for (int i = 0; i < 3; i++) {
+		pnodo nuevo;
+		crear_nodo(nuevo, l1[i]);
+		agregar_final(lista_ordenada1, nuevo);
+	}
+	for (int i = 0; i < 3; i++) {
+		pnodo nuevo;
+		crear_nodo(nuevo, l2[i]);
+		agregar_final(lista_ordenada2, nuevo);
+	}
+	
+	cout << "Lista ordenada 1: " << endl;
+	mostrar_lista(lista_ordenada1);
+	
+	cout << "Lista ordenada 2: " << endl;
+	mostrar_lista(lista_ordenada2);
+	
+	pnodo combinada_ordenada = combinar_listas_ordenadas(lista_ordenada1, lista_ordenada2);
+	cout << "Lista combinada ordenada: " << endl;
+	mostrar_lista(combinada_ordenada);
 	
 	return 0;
 }
+
