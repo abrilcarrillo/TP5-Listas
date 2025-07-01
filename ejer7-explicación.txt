@@ -1,0 +1,60 @@
+Análisis de código de ejercicio 7:
+
+Función enigma
+ACCIONES: 
+-Primero verifica si el nodo no es nulo (o sea, si la lista no está vacía).
+
+-Si no es nulo, revisa si ese nodo es el último (si su siguiente es nullptr).
+
+-Si es el último, muestra el dato de ese nodo en pantalla.
+
+-Si no es el último, vuelve a llamarse a sí misma con el siguiente nodo.
+
+-Después de volver de la llamada recursiva, muestra el dato del nodo actual.
+
+PROPÓSITO: 
+El propósito de esta función es imprimir todos los elementos de la lista, pero en orden inverso. Lo logra porque primero va al final de la lista con las llamadas recursivas y recién cuando vuelve hacia atrás empieza a mostrar los datos.
+
+Ej. con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+Su resultado sería:
+8
+5
+9
+4
+6
+
+Función int misterio
+ACCIONES: 
+-Si el nodo es nulo (lista vacía o llega al final), devuelve 0.
+
+-Si el nodo no es nulo, suma 1 y vuelve a llamarse con el siguiente nodo.
+
+-Esto se repite hasta llegar al final de la lista.
+
+PROPÓSITO: 
+Esta función sirve para contar cuántos elementos hay en la lista. Cada vez que encuentra un nodo, suma uno, y al final devuelve el total.
+
+Ej. con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+Su resultado sería:
+5
+
+
+Función: Nodo* desconocido
+ACCIONES: 
+-Si el nodo es nulo o es el último nodo (su siguiente es nulo), lo devuelve.
+
+-Si no es el último, vuelve a llamarse con el siguiente nodo.
+
+-Cuando llega al último nodo, lo retorna y se lo pasa hacia atrás en todas las llamadas anteriores.
+
+PROPÓSITO: 
+Esta función está diseñada para obtener el último nodo de la lista. Al recorrer toda la lista con recursión, cuando llega al final lo devuelve.
+
+Ej. con la lista:
+6 → 4 → 9 → 5 → 8 → NULL
+El resultado sería un puntero al nodo que contiene el valor 8 (el último de la lista).
+
+
+
