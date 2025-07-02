@@ -21,3 +21,12 @@ void CrearNodo(pnodo &nuevo, int valor) {
 		nuevo->ant = NULL;
 	}
 }
+void AgregarInicio(pnodo &inicio, pnodo nuevo) {
+	if (inicio == NULL) {
+		inicio = nuevo;
+	} else {
+		nuevo->sig = inicio;
+		inicio->ant = nuevo;
+		inicio = nuevo;
+	}
+}
