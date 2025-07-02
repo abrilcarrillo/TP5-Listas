@@ -117,3 +117,50 @@ pnodo QuitarNodo(pnodo &inicio, int valor) {
 	}
 	return extraido;
 }
+bool BuscarNodo(pnodo inicio, int valor) {
+	pnodo i = inicio;
+	while (i != NULL) {
+		if (i->dato == valor) return true;
+		i = i->sig;
+	}
+	return false;
+}
+void MostrarLista(pnodo inicio) {
+	pnodo i;
+	if (inicio != NULL) {
+		for (i = inicio; i != NULL; i = i->sig) {
+			cout << i->dato << " ";
+		}
+		cout << endl;
+	} else {
+		cout << "Lista vacia" << endl;
+	}
+}
+int main() {
+	pnodo lista;
+	IniciarLista(lista);
+	
+	pnodo n1, n2, n3;
+	CrearNodo(n1, 30);
+	CrearNodo(n2, 10);
+	CrearNodo(n3, 20);
+	
+	AgregarOrden(lista, n1);
+	AgregarOrden(lista, n2);
+	AgregarOrden(lista, n3);
+	
+	cout << "Lista ordenada: ";
+	MostrarLista(lista);
+	
+	int buscar;
+	cout << "Ingrese un valor a buscar: ";
+	cin >> buscar;
+	
+	if (BuscarNodo(lista, buscar)) {
+		cout << "Valor encontrado." << endl;
+	} else {
+		cout << "Valor no encontrado." << endl;
+	}
+	
+	return 0;
+}
