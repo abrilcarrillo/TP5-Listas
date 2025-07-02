@@ -1,0 +1,7 @@
+Correcciones en mensajes de commits ejercicio 1 TP6 - Lista Doble
+
+- El commit que subí con las funciones "Quitar: inicio, final y nodo" corresponde en realidad al commit 4, no al 5.
+
+- El commit 5 corresponde a "buscar, mostrar y main", que contiene las funciones BuscarNodo, MostrarLista y el main() de prueba.
+
+Disculpen la confusion, gracias
