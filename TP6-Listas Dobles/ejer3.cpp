@@ -37,3 +37,11 @@ void AgregarInicio(tlista &lista, pnodo nuevo) {
 		lista.inicio = nuevo;
 	}
 }
+void DecimalABinario(tlista &lista, int numero) {
+	pnodo nuevo;
+	while (numero > 0) {
+		CrearNodo(nuevo, numero % 2);
+		AgregarInicio(lista, nuevo);
+		numero /= 2;
+	}
+}
