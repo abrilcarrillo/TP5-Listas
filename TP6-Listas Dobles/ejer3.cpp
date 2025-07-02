@@ -45,3 +45,26 @@ void DecimalABinario(tlista &lista, int numero) {
 		numero /= 2;
 	}
 }
+void MostrarLista(tlista lista) {
+	pnodo i;
+	for (i = lista.inicio; i != NULL; i = i->sig) {
+		cout << i->dato;
+	}
+	cout << endl;
+}
+
+int main() {
+	tlista binario;
+	int numero;
+	IniciarLista(binario);
+	
+	cout << "Ingrese un numero decimal: ";
+	cin >> numero;
+	
+	DecimalABinario(binario, numero);
+	
+	cout << "Numero en binario: ";
+	MostrarLista(binario);
+	
+	return 0;
+}
