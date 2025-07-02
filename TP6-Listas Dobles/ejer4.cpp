@@ -46,3 +46,48 @@ void MostrarLista(tlista lista) {
 	}
 	cout << endl;
 }
+void MostrarMayorYMenor(tlista lista) {
+	if (lista.inicio == NULL) {
+		cout << "La lista esta vacia." << endl;
+		return;
+	}
+	
+	int mayor = lista.inicio->dato;
+	int menor = lista.inicio->dato;
+	
+	pnodo i = lista.inicio->sig;
+	while (i != NULL) {
+		if (i->dato > mayor) mayor = i->dato;
+		if (i->dato < menor) menor = i->dato;
+		i = i->sig;
+	}
+	
+	cout << "Mayor: " << mayor << endl;
+	cout << "Menor: " << menor << endl;
+}
+
+
+int main() {
+	tlista lista;
+	pnodo nuevo;
+	IniciarLista(lista);
+	
+	CrearNodo(nuevo, 40);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 15);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 80);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 5);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 30);
+	AgregarFinal(lista, nuevo);
+	
+	cout << "Lista cargada: ";
+	MostrarLista(lista);
+	
+	MostrarMayorYMenor(lista); 
+	
+	return 0;
+}
+
