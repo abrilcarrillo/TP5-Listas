@@ -67,3 +67,30 @@ void EliminarMultiplosDeTres(tlista &lista) {
 		actual = siguiente;
 	}
 }
+int main() {
+	tlista lista;
+	pnodo nuevo;
+	
+	IniciarLista(lista);
+	
+	CrearNodo(nuevo, 10);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 15);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 20);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 9);
+	AgregarFinal(lista, nuevo);
+	CrearNodo(nuevo, 7);
+	AgregarFinal(lista, nuevo);
+	
+	cout << "Lista original: ";
+	MostrarLista(lista);
+	
+	EliminarMultiplosDeTres(lista);
+	
+	cout << "Lista sin multiplos de 3: ";
+	MostrarLista(lista);
+	
+	return 0;
+}
